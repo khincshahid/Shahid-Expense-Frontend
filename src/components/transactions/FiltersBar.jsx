@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import Select from '../ui/Select';
+import DateField from '../ui/DateField';
 import { paymentMethodLabel } from '../../utils/formatters';
 
 export default function FiltersBar({ filters, onChange, categories, onReset }) {
@@ -167,25 +168,19 @@ export default function FiltersBar({ filters, onChange, categories, onReset }) {
                 />
               </div>
 
-              <div>
-                <label className="label">From date</label>
-                <input
-                  type="date"
-                  value={filters.startDate}
-                  onChange={(e) => update('startDate', e.target.value)}
-                  className="input"
-                />
-              </div>
+              <DateField
+                value={filters.startDate}
+                onChange={(e) => update('startDate', e.target.value)}
+                label="From date"
+                ariaLabel="From date"
+              />
 
-              <div>
-                <label className="label">To date</label>
-                <input
-                  type="date"
-                  value={filters.endDate}
-                  onChange={(e) => update('endDate', e.target.value)}
-                  className="input"
-                />
-              </div>
+              <DateField
+                value={filters.endDate}
+                onChange={(e) => update('endDate', e.target.value)}
+                label="To date"
+                ariaLabel="To date"
+              />
 
               <div>
                 <label className="label">Min amount</label>
