@@ -10,15 +10,15 @@ export const formatMoney = (value) => {
 };
 
 /**
- * Format a date as "15 Jan 2025".
+ * Format a date as "Mar 03 2026".
  */
 export const formatDate = (date) => {
   if (!date) return '—';
-  return new Date(date).toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-  });
+  const d = new Date(date);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = d.toLocaleDateString('en-US', { month: 'short' });
+  const year = d.getFullYear();
+  return `${month} ${day} ${year}`;
 };
 
 /**
@@ -37,7 +37,6 @@ export const toInputDate = (date) => {
  * Currency symbol for a currency code.
  */
 export const currencySymbol = (currency) => (currency === 'USD' ? '$' : 'Rs');
-
 
 /**
  * Display label for payment methods.
